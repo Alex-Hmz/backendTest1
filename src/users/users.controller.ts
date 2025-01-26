@@ -36,7 +36,6 @@ export class UsersController {
 
   @Delete('/:id')
   @UseGuards(AuthGuard('jwt'))
-
   async delete(@Param('id') id:string): Promise<Partial<Users>>{
     return this.userService.deleteUser(id);
   }

@@ -52,3 +52,21 @@ Esta API permite gestionar usuarios, camiones, ubicaciones y órdenes relacionad
 - **MongoDB**: Base de datos NoSQL utilizada para almacenar los datos.
 - **Google Places API**: Para obtener coordenadas y direcciones a partir de `place_id`.
 - **Postman**: Herramienta para probar y documentar los endpoints.
+
+Desarrollo del aplicativo
+Planificación:
+- Se dividió el proyecto en módulos: Users, Trucks, Locations y Orders.
+- Se analizaron los requisitos y se diseñaron entidades y relaciones.
+
+Desarrollo de funcionalidades:
+- Implementación de CRUD en cada módulo usando NestJS y TypeORM.
+- Encriptación de contraseñas con bcrypt.
+- Integración con Google Places API para gestionar ubicaciones.
+
+Validaciones y manejo de errores:
+- Se implementaron validaciones para evitar datos duplicados (e.g., emails únicos).
+- Uso de HttpException para manejar errores personalizados.
+
+Depuración:
+- Pruebas exhaustivas de cada endpoint con Postman.
+- Logs para identificar problemas durante el desarrollo

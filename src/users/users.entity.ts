@@ -5,10 +5,13 @@ export class Users {
   @ObjectIdColumn() 
   _id: ObjectId;
 
+  @Column({ unique: true })
+  id:string;
+
   @Column()
   username: string;
 
-  @Column({ unique: true })
+  @Column()
   email: string;
 
   @Column()

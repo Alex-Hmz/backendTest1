@@ -1,73 +1,54 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# API de Gestión de Usuarios, Camiones, Ubicaciones y Órdenes 🚚
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Esta API permite gestionar usuarios, camiones, ubicaciones y órdenes relacionadas con un servicio de transporte. La API incluye funcionalidad completa de CRUD (Crear, Leer, Actualizar, Eliminar) y se conecta con la API de Google Places para obtener datos de ubicaciones.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+---
 
-## Description
+## **Funcionalidad**
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+### **Endpoints principales**
+1. **Usuarios (`api/v1/users`)**:
+   - CRUD para gestionar usuarios.
+   - Los datos de cada usuario incluyen:
+     - `username`: Nombre del usuario.
+     - `email`: Correo electrónico único.
+     - `password`: Contraseña encriptada.
 
-## Installation
+2. **Camiones (`api/v1/trucks`)**:
+   - CRUD para gestionar camiones asignados a usuarios.
+   - Los datos de cada camión incluyen:
+     - `user`: ID del usuario al que pertenece.
+     - `year`: Año del modelo.
+     - `color`: Color del camión.
+     - `plates`: Matrícula del camión.
 
-```bash
-$ npm install
-```
+3. **Ubicaciones (`api/v1/locations`)**:
+   - CRUD para gestionar ubicaciones obtenidas a partir de un `place_id` de Google Places.
+   - Los datos de cada ubicación incluyen:
+     - `address`: Dirección obtenida de la API de Google.
+     - `place_id`: ID del lugar.
+     - `latitude`: Latitud de la ubicación.
+     - `longitude`: Longitud de la ubicación.
 
-## Running the app
+4. **Órdenes (`api/v1/orders`)**:
+   - CRUD para gestionar órdenes relacionadas con usuarios, camiones y ubicaciones.
+   - Los datos de cada orden incluyen:
+     - `user`: ID del usuario.
+     - `truck`: ID del camión asignado.
+     - `pickup`: ID de la ubicación de recogida.
+     - `dropoff`: ID de la ubicación de entrega.
+     - `status`: Estado de la orden (`created`, `in transit`, `completed`).
 
-```bash
-# development
-$ npm run start
+5. **Cambio de estado de órdenes**:
+   - Endpoint para actualizar el estado de una orden (`api/v1/orders/:id/status`).
 
-# watch mode
-$ npm run start:dev
+---
 
-# production mode
-$ npm run start:prod
-```
+## **Desarrollo**
 
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+### **Tecnologías utilizadas**
+- **NestJS**: Framework principal para el backend.
+- **TypeORM**: ORM para la conexión con la base de datos MongoDB.
+- **MongoDB**: Base de datos NoSQL utilizada para almacenar los datos.
+- **Google Places API**: Para obtener coordenadas y direcciones a partir de `place_id`.
+- **Postman**: Herramienta para probar y documentar los endpoints.

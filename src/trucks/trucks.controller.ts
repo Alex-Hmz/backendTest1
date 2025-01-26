@@ -22,6 +22,7 @@ export class TrucksController {
         return this.trucksService.findAll();
     }
     @Get(':id')
+    @UseGuards(AuthGuard('jwt'))
     async getTruckById(@Param('id') id: string): Promise<Trucks> {
       return this.trucksService.getOneById(id);
     }
@@ -32,6 +33,7 @@ export class TrucksController {
     return this.trucksService.update(updateTruckDto);
     }
     @Delete(':id')
+    @UseGuards(AuthGuard('jwt'))
     async delete(@Param('id') id: string): Promise<Trucks | undefined> {
       return this.trucksService.delete(id);
     }

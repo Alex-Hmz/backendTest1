@@ -70,3 +70,20 @@ Validaciones y manejo de errores:
 Depuración:
 - Pruebas exhaustivas de cada endpoint con Postman.
 - Logs para identificar problemas durante el desarrollo
+
+## **Requisitos para correr el proyecto**
+
+### **1. Clonar el repositorio**
+Clone el repositorio y acceda al directorio del proyecto:
+
+git clone https://github.com/Alex-Hmz/backendTest1.git
+cd backendTest1
+
+Instale las dependencias
+npm install
+
+Configure el archivo .env
+
+Ejecute el comando para iniciar en modo desarrollo:
+npm run start:dev
+

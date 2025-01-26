@@ -71,7 +71,7 @@ export class LocationsService {
         return await this.locationsRepository.find();
       }
     
-      async updateLocation(_id: string, updateData: Partial<Locations>): Promise<Locations> {
+      async updateLocation(_id: string, update: Partial<Locations>): Promise<Locations> {
         const location = await this.locationsRepository.findOne({
           where: { _id: new ObjectId(_id) },
         });
@@ -80,8 +80,14 @@ export class LocationsService {
           throw new HttpException('Ubicación no encontrada', HttpStatus.NOT_FOUND);
         }
     
-        Object.assign(location, updateData);
-        return await this.locationsRepository.save(location);
+        Object.assign(location, update);
+
+        const response = await this.locationsRepository.update(new ObjectId(_id), location);
+    
+        return await this.locationsRepository.findOneBy({
+            _id: new ObjectId(_id),
+          });
+
       }
     
       async deleteLocation(_id: string): Promise<Locations> {

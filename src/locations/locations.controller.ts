@@ -11,7 +11,7 @@ export class LocationsController {
     return this.locationsService.createLocation(place_id);
   }
 
-  @Get()
+  @Get('all')
   async getAllLocations() {
     return this.locationsService.getAllLocations();
   }

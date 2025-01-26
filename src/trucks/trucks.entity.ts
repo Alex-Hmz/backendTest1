@@ -6,7 +6,6 @@ export class Trucks {
   @ObjectIdColumn()
   _id: ObjectId;
 
-  
   @Column()
   user: ObjectId;
 

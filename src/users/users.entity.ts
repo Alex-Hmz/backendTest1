@@ -1,4 +1,5 @@
-import { Entity, ObjectIdColumn, ObjectId, Column } from 'typeorm';
+import { Trucks } from 'src/trucks/trucks.entity';
+import { Entity, ObjectIdColumn, ObjectId, Column, OneToOne } from 'typeorm';
 
 @Entity('users')
 export class Users {
@@ -25,4 +26,6 @@ export class Users {
 
   @Column({ default: true })
   is_active: boolean;
+
+
 }

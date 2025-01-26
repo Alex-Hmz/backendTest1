@@ -1,5 +1,5 @@
 import { IsString, IsNotEmpty, IsEmail, MinLength, MaxLength } from 'class-validator';
-import { ObjectId } from 'typeorm';
+import { ObjectId } from 'mongodb';
 
 export class UpdateUserDto {
 

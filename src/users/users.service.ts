@@ -176,7 +176,7 @@ export class UsersService {
         );
       }
 
-      const delete_user = await this.usersRepository.delete(id);
+      const delete_user = await this.usersRepository.remove(exits_user);
       return exits_user;
 
     }catch(error){
